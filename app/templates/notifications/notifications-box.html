@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load notification_count %}
+{% load new_notification_count %}
+
+{% block content %}
+    <head>
+        <title>{% trans 'Notifications' %}</title>
+        <!-- icheck bootstrap -->
+        <link rel="stylesheet" href={% static 'admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}>
+    </head>
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>{% trans 'Notifications' %}</h1>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">{% trans 'Folders' %}</h3>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item active">
+                                    <a href="{% url 'notifications' %}?new=False" class="nav-link">
+                                        <i class="fas fa-inbox"></i> {% trans 'All notifications' %}
+                                        <span class="badge bg-secondary float-right">{% notification_count request.user %}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'notifications' %}?new=True" class="nav-link">
+                                        <i class="far fa-envelope"></i> {% trans 'Unread notifications' %}
+                                        <span class="badge bg-primary float-right">{% new_notification_count request.user %}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">{% trans 'All notifications' %}</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="mailbox-controls">
+                                <!-- Check all button -->
+
+                                <!-- /.btn-group -->
+                                <button type="button" onClick="refreshPage()" class="btn btn-default btn-sm">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                                <div class="float-right">
+                                    <div class="float-right">
+                                        {% trans 'Page' %} {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}
+                                        <div class="btn-group">
+                                            {% if page_obj.has_previous %}
+                                                <a href="?page={{ page_obj.previous_page_number }}">
+                                                    <button type="button" class="btn btn-default btn-sm">
+                                                        <i class="fas fa-chevron-left"></i>
+                                                    </button>
+                                                </a>
+                                            {% endif %}
+
+                                            {% if page_obj.has_next %}
+                                                <a href="?page={{ page_obj.next_page_number }}">
+                                                    <button type="button" class="btn btn-default btn-sm">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </button>
+                                                </a>
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+                                    <!-- /.float-right -->
+                                </div>
+                                <div class="table-responsive mailbox-messages">
+                                    <table class="table table-hover table-striped">
+                                        <tbody>
+                                        {% for instance in notifications_instances %}
+                                            <tr>
+                                                <td class="mailbox-date">
+                                                    <form method="post"
+                                                          action="{% url 'delete-notification' instance.notification.pk %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-default">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+
+                                                <td class="mailbox-read-message">
+                                                    {% if instance.is_read %}
+                                                        <i class="far fa-envelope-open"></i>
+                                                    {% else %}
+                                                        <i class="far fa-envelope"></i>
+                                                    {% endif %}
+                                                </td>
+
+                                                <td class="mailbox-date">
+                                                    <a href="{% url 'notification' instance.notification.pk %}">
+                                                        {{ instance.notification.created_at }}</a>
+                                                </td>
+
+                                                <td class="mailbox-read-message">Getmobit</td>
+
+                                                <td class="mailbox-date"><a
+                                                        href="{% url 'notification' instance.notification.pk %}">
+                                                    {{ instance.notification.subject|truncatewords:10 }}</a></td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                    <!-- /.table -->
+                                </div>
+                                <!-- /.mail-box-messages -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer p-0">
+                                <div class="mailbox-controls">
+                                    <button type="button" onClick="refreshPage()" class="btn btn-default btn-sm">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                    <div class="float-right">
+                                        {% trans 'Page' %} {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}
+                                        <div class="btn-group">
+                                            {% if page_obj.has_previous %}
+                                                <a href="?page={{ page_obj.previous_page_number }}">
+                                                    <button type="button" class="btn btn-default btn-sm">
+                                                        <i class="fas fa-chevron-left"></i>
+                                                    </button>
+                                                </a>
+                                            {% endif %}
+
+                                            {% if page_obj.has_next %}
+                                                <a href="?page={{ page_obj.next_page_number }}">
+                                                    <button type="button" class="btn btn-default btn-sm">
+                                                        <i class="fas fa-chevron-right"></i>
+                                                    </button>
+                                                </a>
+                                            {% endif %}
+
+                                        </div>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                </div>
+                                <!-- /.float-right -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Page specific script -->
+    <script>
+        function refreshPage() {
+            window.location.reload();
+        }
+    </script>
+
+    <script>
+        $(function () {
+            //Enable check and uncheck all functionality
+            $('.checkbox-toggle').click(function () {
+                var clicks = $(this).data('clicks')
+                if (clicks) {
+                    //Uncheck all checkboxes
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                    $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+                } else {
+                    //Check all checkboxes
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                    $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+                }
+                $(this).data('clicks', !clicks)
+            })
+        })
+    </script>
+{% endblock content %}

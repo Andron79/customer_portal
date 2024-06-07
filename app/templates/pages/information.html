@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <head>
+        <title>{% trans 'Information' %}</title>
+    </head>
+
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+
+    <div class="content-wrapper">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">{% trans 'Information' %}</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row-cols-12">
+                {% for info in informations %}
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h5 class="m-0">{{ info.title }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{% autoescape off %}{{ info.description }}{% endautoescape %}</p>
+                            </div>
+                            <div class="card-footer">
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}

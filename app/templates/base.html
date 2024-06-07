@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    {% include 'includes/main_head.html' %}
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/site/img/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/site/img/favicon-16x16.png"/>
+    <link rel="shortcut icon" href="/static/site/img/favicon.ico"/>
+</head>
+<body class="hold-transition sidebar-mini dark-mode layout-footer-fixed layout-navbar-fixed">
+
+<div class="wrapper">
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader flex-column justify-content-xl-center align-items-center" style="height: 100%;">
+            <img class="brand-image img-circle elevation-3 animation__wobble"
+                 src="{% static 'admin-lte/dist/img/getmobit_logo.png' %}" alt="Getmobit Logo"
+                 height="70" width="70">
+        </div>
+    </div>
+
+    {% block content %}  {% endblock %}
+
+    {% include 'includes/main_footer.html' %}
+</div>
+</body>
+</html>

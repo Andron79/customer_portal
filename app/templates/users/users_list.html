@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <head>
+        <title>{% trans 'Users' %}</title>
+    </head>
+
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark"> {% trans 'Users' %} {{ request.user.profile.company }}</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{% trans 'Company Users Limit' %}:
+                                    {{ request.user.profile.company.max_num_company_users }}</h5>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="users" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>{% trans 'registration date' %}</th>
+                                        <th>{% trans 'Name' %}</th>
+                                        <th>{% trans 'Email' %}</th>
+                                        <th>{% trans 'Role' %}</th>
+                                        <th>{% trans 'Account confirmed' %}?</th>
+                                        <th>{% trans 'Resend activation email' %}?</th>
+                                        <th>{% trans 'Edit/Delete' %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    {% for user_profile in users_profiles %}
+                                        <tr>
+                                            <td>{{ user_profile.user.date_joined }}</td>
+                                            <td>{{ user_profile.name }}</td>
+                                            <td>{{ user_profile.user }}</td>
+                                            <td>{{ user_profile.get_role_display }}</td>
+                                            <td class="table__cell--small">
+                                                {% if user_profile.user.is_active %}
+                                                    <i class='fas fa-user-check'></i>
+                                                {% else %}
+                                                    <i class='fas fa-user-lock'></i>
+                                                {% endif %}
+                                            </td>
+
+                                            <td>
+                                                {% if not user_profile.user.is_active %}
+
+                                                    <form action="{% url 'send-email-verification-token' %}"
+                                                          method="post">
+                                                        {% csrf_token %}
+                                                        <button class="button--transparent" type="submit"
+                                                                title="{% trans 'Resend activation email' %}">
+                                                            <i class='fa fa-envelope-open nav-icon'></i>
+                                                        </button>
+                                                        <input type="hidden" name='profile_id'
+                                                               value='{{ user_profile.pk }}'/>
+                                                    </form>
+
+                                                {% endif %}
+                                            </td>
+
+                                            <td class="table__cell--small">
+                                                {% if user.profile.pk != user_profile.pk %}
+                                                    <a href="{% url 'update-user' user_profile.pk %}"
+                                                       class="nav-link ">
+                                                        <i class="far fa-edit nav-icon"></i>
+                                                    </a>
+
+                                                    <a href="{% url 'delete-user' user_profile.pk %}"
+                                                       class="nav-link">
+                                                        <i class="far fa-trash-alt nav-icon"></i>
+                                                    </a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- /.content-wrapper -->
+
+    <!-- DataTables  & Plugins -->
+    <script src="{% static 'admin-lte/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables/ru_translations.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+
+{% endblock %}

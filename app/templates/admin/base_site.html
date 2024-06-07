@@ -1,0 +1,161 @@
+{% extends "admin/base_site.html" %}
+
+{% load i18n %}
+
+{% block extrastyle %}
+<style>
+  :root {
+    --primary-color: #1b1b1d;
+    --primary-act: #1d000f;
+    --primary-color-faded: #222;
+    --secondary-color: #5ea2ff;
+    --btn-active-color: #5ea2ff;
+    --btn-active-color-other: #5b90ea;
+    --btn-active-color-faded: #70b3ff;
+    --white-color: #fff;
+  }
+
+  {#::selection {#}
+  {#  background: var(--secondary-color);#}
+  {#  color:var(--primary-color);#}
+  {#  opacity:1#}
+  {##}
+
+  {#::-moz-selection {#}
+  {#  background: var(--secondary-color);#}
+  {#  color:var(--primary-color);#}
+  {#  opacity:1#}
+  {##}
+  body {
+    font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol';
+  }
+  #header {
+      color: var(--white-color);
+  }
+  #branding h1 {
+        padding: 0;
+        margin: 0 20px 0 0;
+        font-weight: 300;
+        font-size: 24px;
+        color: var(--white-color);
+
+    }
+  #branding{
+  text-align: center;
+  }
+  .login #header h1  {
+      margin: 0
+  }
+  .login #header a  {
+      display: block;
+  }
+
+    #branding h1, #branding h1 a:link, #branding h1 a:visited {
+        color: var(--secondary-color);
+    }
+  #header {
+    background: var(--primary-color);
+  }
+  .module h2, .module caption, .inline-group h2 {
+    background-color: var(--primary-color-faded);
+  }
+  div.breadcrumbs {
+    background: var(--primary-color-faded);
+  }
+  a:link, a:visited {
+    color: var(--secondary-color);
+  }
+  th {
+    font-weight: 400;
+  }
+  .selector-chosen h2 {
+    background: var(--primary-color-faded) !important;
+  }
+  .button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: var(--btn-active-color-other);
+  }
+  .button.default, input[type=submit].default, .submit-row input.default {
+    background: var(--btn-active-color);
+  }
+  #admin_form .module  #id_password, .module .form-row.field-password .readonly {
+    display: none;
+    }
+
+  .object-tools a:link, .object-tools a:visited {
+      background-color: var(--btn-active-color-other);
+  }
+  .object-tools a:hover {
+      opacity: 0.8;
+  }
+  .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: var(--btn-active-color-faded);
+    opacity: 0.8;
+  }
+  .button.default:active, input[type=submit].default:active, .button.default:focus, input[type=submit].default:focus, .button.default:hover, input[type=submit].default:hover {
+    background: var(--btn-active-color-faded);
+    opacity: 0.8;
+  }
+  #logo {
+    height: 12px;
+    width: 130px;
+
+    margin-bottom: 10px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMwIiBoZWlnaHQ9IjEyIiB2aWV3Qm94PSIwIDAgMTMwIDEyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE4LjMwMjMgNS40NTkxOFYxMS41NzU1SDE1Ljk0NjNDMTUuOTQ4NCAxMC41NzggMTYuMDE5NyA5LjczMjQxIDE2LjAyMDMgOS43MjM1NkwxNi4wMjk0IDkuNjE2ODNMMTUuODcyNyA5Ljc0NjEzQzE0LjA5OTEgMTEuMjQxNiAxMS43NDc0IDEyIDguODgyNDIgMTJDMS44NzA3NSAxMiAwIDguMjUzNzIgMCA2LjA0MDFDMCAzLjk3ODM1IDEuOTAzMzUgMC4wNzk4OTYzIDkuMTA2NDUgMC4wNzk4OTYzQzEzLjYzMjQgMC4wNzk4OTYzIDE2Ljg1NyAxLjk2MjAzIDE2Ljc2NzkgMS44ODI0NEwxNS42MzIgNC4zMjM1NUMxNS42MzIgNC4zMjM1NSAxMi45MTU5IDIuNjk3NTcgOS4xMDY0NSAyLjY5NzU3QzQuODcyNTIgMi42OTc1NyAzLjMzNTQgNC40OTUyNCAzLjMzNTQgNi4wNDAxQzMuMzM1NCA3LjU4NDY2IDQuNjc1MzYgOS4zODI2MyA4Ljg4MjQyIDkuMzgyNjNDMTEuMDg2OCA5LjM4MjYzIDEzLjA0NTcgOC44MTYzNSAxNC4yNTcgNy44Mjg2MkwxNC4zNTU1IDcuNzQ4NzJIMTEuNjE5NFY1LjQ1OTE4SDE4LjMwMjNaTTgxLjI2MDkgOS4zNTUxOUM3Ny4yNTcxIDkuMzU1MTkgNzUuODQ4MyA3LjMyNDg1IDc1Ljg0ODMgNS45NjAyQzc1Ljg0ODMgMy42Mjc2NiA3OC42MzI3IDIuNTY0OTIgODEuMjYwOSAyLjU2NDkyQzg0Ljg0NDUgMi41NjQ5MiA4Ni42NzQ1IDQuMjcyOTMgODYuNjc0NSA1Ljk2MDJDODYuNjc0NSA4LjMwMTU5IDgzLjUyNzIgOS4zNTUxOSA4MS4yNjA5IDkuMzU1MTlaTTg3LjIwNSAxLjUxMzQ2Qzg1LjU4MjQgMC41MzczMTggODMuNTAwMyAwIDgxLjI2MDkgMEM3OS4wMjE1IDAgNzYuOTM5NCAwLjUzNzMxOCA3NS4zMTY5IDEuNTEzNDZDNzMuNTA4NiAyLjYwMDU5IDcyLjUxMjkgNC4xNzk5MiA3Mi41MTI5IDUuOTYwMkM3Mi41MTI5IDcuNzQwMTggNzMuNTA4NiA5LjMxOTUxIDc1LjMxNjkgMTAuNDA3Qzc2LjkzOTQgMTEuMzgyOCA3OS4wMjE1IDExLjkxOTggODEuMjYwOSAxMS45MTk4QzgzLjUwMDMgMTEuOTE5OCA4NS41ODI0IDExLjM4MjggODcuMjA1IDEwLjQwN0M4OS4wMTMzIDkuMzE5NTEgOTAuMDA5IDcuNzQwMTggOTAuMDA5IDUuOTYwMkM5MC4wMDkgNC4xNzk5MiA4OS4wMTMzIDIuNjAwNTkgODcuMjA1IDEuNTEzNDZaTTEwMy4wNzYgNC45NTIzNUg5NS4xMzY3VjMuMDkzMDlIMTAzLjA3NkMxMDMuNTg0IDMuMDkzMDkgMTAzLjk5NiAzLjUwOTk1IDEwMy45OTYgNC4wMjI1N0MxMDMuOTk2IDQuNTM1MTggMTAzLjU4NCA0Ljk1MjM1IDEwMy4wNzYgNC45NTIzNVpNMTAzLjgwOSA5LjEwNDUySDk1LjEzNjdWNy4yNDU1NkgxMDMuODA5QzEwNC4zMTYgNy4yNDU1NiAxMDQuNzI5IDcuNjYyNDIgMTA0LjcyOSA4LjE3NTA0QzEwNC43MjkgOC42ODc2NiAxMDQuMzE2IDkuMTA0NTIgMTAzLjgwOSA5LjEwNDUyWk05Mi4xNTk2IDExLjU3NTVIMTAzLjg4QzEwNi4wMjcgMTEuNTc1NSAxMDcuNTg1IDEwLjE1NDIgMTA3LjU4NSA4LjE5NTc4QzEwNy41ODUgNy4yNTUwMSAxMDcuMTU1IDYuMzQyNjEgMTA2LjQwNyA1LjY5MjQ2TDEwNi4zNzggNS42Njc3NkwxMDYuMzk4IDUuNjM1MTNDMTA2LjY5MyA1LjEzMTk3IDEwNi44NSA0LjU2NjI5IDEwNi44NSAzLjk5ODE3QzEwNi44NSAyLjE5Nzc2IDEwNS4xODEgMC42MTg3MzkgMTAzLjI3OSAwLjYxODczOUg5Mi4xNTk2VjExLjU3NTVaTTEyMS42MDEgMTEuNTc1NUgxMjQuNzU4VjMuMTgzMzVIMTMwVjAuNjE4NzM5SDExNi4zNTlWMy4xODMzNUgxMjEuNjAxVjExLjU3NTVaTTExMC40NzYgMTEuNTc1NUgxMTMuODExVjAuNjE4NDM0SDExMC40NzZWMTEuNTc1NVpNNDIuNjAzOSAxMS41NzU1SDQ1Ljc2MDVWMy4xODMzNUg1MS4wMDI2VjAuNjE4NzM5SDM3LjM2MThWMy4xODMzNUg0Mi42MDM5VjExLjU3NTVaTTIxLjI0MTIgMTEuNTc1NUgzNS4yMzMyVjkuMDEwNkgyNC4yMTg2VjcuMjQ1NTZIMzUuMDU0MlY0Ljk1MjM1SDI0LjIxODZWMy4xODMzNUgzNS4yMzMyVjAuNjE4NzM5SDIxLjI0MTJWMTEuNTc1NVpNNjcuMzE4MiAxMS41NzU1SDcwLjQ3NDZWMC42MTg3MzlINjUuODk2MUw2MS44MzQgOS4wMTMwNEw1Ny43NzE4IDAuNjE4NzM5SDUzLjEwNjFWMTEuNTc1NUg1Ni4yNjI1VjMuMTkyMTlMNjAuMjI3MSAxMS41NzU1SDYzLjQ3NDdMNjcuMzE4MiAzLjQ2NDUxVjExLjU3NTVaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K");
+  }
+  .login #logo {
+    display: inline-block;
+  }
+  .field-inn {
+    vertical-align: middle;
+}
+  .field-kpp {
+   vertical-align: middle;
+}
+  .field-title {
+   vertical-align: middle;
+}
+  .field-updated_at {
+   vertical-align: middle;
+}
+  .field-created_at {
+   vertical-align: middle;
+}
+  .field-current_users_count {
+   vertical-align: middle;
+}
+  .action-checkbox {
+   vertical-align: middle;
+}
+.downloadlink {
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    float: left;
+    padding: 5px 12px;
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fff;
+    border-radius: 15px;
+        background-color: var(--btn-active-color-other);
+}
+</style>
+{% endblock %}
+
+{% block branding %}
+
+<h1 id="site-name">
+    <div id="logo"></div><a href="{% url 'admin:index' %}">{{ site_header|default:_('Customer Portal') }}</a>
+</h1>
+{% endblock %}

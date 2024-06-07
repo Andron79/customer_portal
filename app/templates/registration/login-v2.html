@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+    <head>
+        <title>{% trans 'Login' %}</title>
+    </head>
+    <div class="content-wrapper login-page__wrapper">
+
+        <div class="login-box">
+            <!-- /.login-logo -->
+            <div class="card card-outline card-dark">
+                <div class="card-header text-center">
+                    {% trans 'Sign in to start your session' %}
+                </div>
+                <div class="card-body">
+                    {% if form.errors %}
+                        <p>{% trans "Your username and password didn't match. Please try again." %}</p>
+                    {% endif %}
+
+                    {% if next %}
+                        {% if user.is_authenticated %}
+                            <p>{% trans "Your account doesn't have access to this page.
+                            To proceed, please login with an account that has access." %}</p>
+
+                        {% endif %}
+                    {% endif %}
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+
+                        {{ form.username.label_tag }}
+                        <div class="input-group mb-3 Form__login-wrapper">
+                            {{ form.username }}
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{ form.password.label_tag }}
+                        <div class="input-group mb-3 Form__login-wrapper">
+
+                            {{ form.password }}
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {#                            <div class="col-8">#}
+                            {#                                <div class="icheck-primary">#}
+                            {#                                    <input type="checkbox" id="remember">#}
+                            {#                                    <label for="remember">#}
+                            {#                                        Remember Me#}
+                            {#                                    </label>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            <!-- /.col -->
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary btn-block">{% trans 'Sign In' %}</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+
+                    <p class="mb-1">
+                        <a href="{% url "password_reset" %}">{% trans 'I forgot my password' %}</a>
+                    </p>
+                </div>
+
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.login-box -->
+    </div>
+{% endblock %}
+

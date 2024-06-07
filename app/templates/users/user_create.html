@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block content %}
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+    <head>
+        <title>{% trans 'Add new user' %}</title>
+    </head>
+    <!-- Main content -->
+    <div class="content-wrapper login-page__wrapper">
+
+        <div class="login-box">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">{% trans 'Add new user' %} {{ request.user.profile.company }}</h3>
+                </div>
+                <div class="card-body">
+                    {% if users_remaining_limit %}
+                        <h5 class="card-title">{% trans 'Users' %} {{ users_count }}
+                            / {{ request.user.profile.company.max_num_company_users }}
+                        </h5>
+                        <h5 class="card-title">{% trans 'You can add' %}
+                            {{ users_remaining_limit }} {% trans 'employee(s)' %}</h5>
+
+                    {% endif %}
+                    <form method="post" autocomplete="off">
+                        {% csrf_token %}
+
+                        <!-- Disable autocomplete (dont erase)-->
+                        <div class="form-group">
+                            <div style="visibility:hidden">
+                                <label>
+                                    <input type="text" name="fake_username_remembered">
+                                </label>
+                                <label>
+                                    <input type="password" name="fake_password_remembered">
+                                </label>
+                            </div>
+                            <!--/.Disable autocomplete -->
+
+                            {{ form.name.label_tag }}
+                            {% render_field form.name type="text" class="form-control" name="name" %}
+
+                            {% if form.email.help_text %}
+                                <small class="form-text text-muted">{{ form.email.help_text }}</small>
+                            {% endif %}
+
+                            {{ form.email.label_tag }}
+                            {% render_field form.email type="email" class="form-control" autocomplete="false" %}
+
+                        </div>
+
+                        {% if form.email.errors %}
+                            <small class="form-text text-danger">{{ form.email.errors }}</small>
+                        {% endif %}
+
+                        {{ form.password.label_tag }}
+                        {% render_field form.password type="password" name="password" class="form-control" autocomplete="new-password" %}
+
+                        {% if form.password.errors %}
+                            <small class="form-text text-danger">{{ form.password.errors }}</small>
+                        {% endif %}
+
+                        {{ form.password2.label_tag }}
+                        {% render_field form.password2 type="password" name="password2" class="form-control" autocomplete="new-password" %}
+
+                        {% if form.password2.errors %}
+                            <small class="form-text text-danger">{{ form.password2.errors }}</small>
+                        {% endif %}
+
+                        {{ form.role.label_tag }}
+                        {% render_field form.role class="form-control" autocomplete="off" %}
+
+                        <div class="form-group">
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content -->
+{% endblock %}

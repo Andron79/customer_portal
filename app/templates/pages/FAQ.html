@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <head>
+        <title>FAQ</title>
+    </head>
+
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+    <div class="content-wrapper">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">FAQ</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            {% for faq in FAQs %}
+            <div class="row">
+
+                    <div class="col-12" id="accordion">
+                        <div class="card card-primary card-outline">
+                            <a class="d-block w-100" data-toggle="collapse" href="#collapse{{ faq.id }}">
+                                <div class="card-header">
+                                    <h4 class="card-title w-100">
+                                        {{ faq.question }}
+                                    </h4>
+                                </div>
+                            </a>
+                            <div id="collapse{{ faq.id }}" class="collapse" data-parent="#accordion">
+                                <div class="card-body">
+                                    {% autoescape off %} {{ faq.answer }} {% endautoescape %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            {% endfor %}
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}

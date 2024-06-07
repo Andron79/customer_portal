@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+    <head>
+        <title>{{ message }}</title>
+    </head>
+    <div class="content-wrapper login-page__wrapper">
+        <div class="card card-outline card-dark">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        {#                        <div class="card-header text-center">#}
+                        {#                            {% trans 'A link to activate the account was sent to this email: ' %}#}
+                        {#                        </div>#}
+                        <div class="card-header text-center">
+                            {{ message }}
+                        </div>
+{#                        {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}#}
+
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {#        <div class="login-box">#}
+        {#            <!-- /. cord change password -->#}
+        {#            <div class="card card-outline card-dark">#}
+        {#                    <div class="card-header text-center">#}
+        {#                        {{ message }}#}
+        {#                    </div>#}
+        {#            </div>#}
+        {#            <!-- /.card -->#}
+        {#        </div>#}
+        {#        <!-- /.login-box -->#}
+    </div>
+{% endblock %}

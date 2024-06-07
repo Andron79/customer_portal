@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <head>
+        <title>{% trans 'Tutorials' %}</title>
+    </head>
+
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+
+    <div class="content-wrapper">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">{% trans 'Tutorials' %}</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row grid-wrapper">
+                {% for tutorial in tutorials %}
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <h5 class="m-0">{{ tutorial.title }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <img src="{{ tutorial.image.url }}" alt="Cover" width="100%"/>
+                                <p class="card-text"></p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ tutorial.external_url }}" rel="external" download="true" target="_blank"
+                                   class="btn btn-primary">{% trans 'Download' %} </a>
+                            </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}

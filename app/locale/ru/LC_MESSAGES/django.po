@@ -1,0 +1,914 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-06 17:33+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: customer_dashboard/admin.py:13 pages/admin.py:57
+msgid "Company type"
+msgstr "Тип компании"
+
+#: customer_dashboard/models.py:15 customer_dashboard/models.py:31
+#: pages/models.py:45 pages/models.py:69
+msgid "Title"
+msgstr "Название"
+
+#: customer_dashboard/models.py:25 customer_dashboard/models.py:39
+msgid "Company Type"
+msgstr "Тип компании"
+
+#: customer_dashboard/models.py:26 pages/models.py:53
+msgid "Companies Types"
+msgstr "Типы компаний"
+
+#: customer_dashboard/models.py:50 users/admin.py:62 users/models.py:59
+msgid "Company"
+msgstr "Компания"
+
+msgid "INN"
+msgstr "ИНН"
+
+msgid "KPP"
+msgstr "КПП"
+
+msgid "Only digit characters (0-9)"
+msgstr "Только цифровые символы (0-9)"
+
+msgid "Company Users Limit"
+msgstr "Лимит пользователей компании"
+
+msgid "You can add"
+msgstr "Вы можете добавить еще"
+
+msgid "employee(s)"
+msgstr "пользователя(ей)"
+
+msgid "Permissions"
+msgstr "Разрешения"
+
+
+msgid "Current number of users"
+msgstr "Текущее кол-во пользователей"
+
+msgid "Company count"
+msgstr "Количество компаний"
+
+msgid "You have reached the limit for user registration. Delete any user or contact Getmobit technical support to increase the limit."
+msgstr "Вы достигли лимита для регистрации пользователей. Удалите любого пользователя или обратитесь в службу технической поддержки Гетмобит для увеличения лимита."
+
+
+#: customer_dashboard/models.py:51 pages/models.py:98 pages/models.py:136
+#: pages/models.py:180 pages/models.py:235
+msgid "Companies"
+msgstr "Компании"
+
+#: pages/admin.py:20 pages/models.py:112
+msgid "Information"
+msgstr "Информация"
+
+#: pages/admin.py:21
+msgid "Informations"
+msgstr "Информационная страница"
+
+#: pages/admin.py:28 pages/models.py:149
+msgid "Document"
+msgstr "Документ"
+
+#: pages/admin.py:29 pages/models.py:150
+msgid "Documents"
+msgstr "Документы"
+
+msgid "Tutorials"
+msgstr "Обучающие материалы"
+
+msgid "Tutorial"
+msgstr "Обучающий материал"
+
+#: pages/admin.py:36 pages/models.py:219
+#: venv/lib/python3.9/site-packages/django/db/models/fields/files.py:232
+msgid "File"
+msgstr "Файл"
+
+#: pages/admin.py:37 pages/models.py:220
+msgid "Files"
+msgstr "Файлы"
+
+#: pages/admin.py:44 pages/models.py:252
+msgid "FAQ"
+msgstr ""
+
+#: pages/admin.py:45 pages/models.py:253
+msgid "FAQs"
+msgstr ""
+
+#: pages/models.py:61
+msgid "Product"
+msgstr "Продукт"
+
+
+msgid "Pages"
+msgstr "Страницы"
+
+msgid "Sections"
+msgstr "Разделы"
+
+msgid "Content"
+msgstr "Контент"
+
+msgid "Created at"
+msgstr "Создано"
+
+msgid "Updated at"
+msgstr "Изменено"
+
+msgid "Company types"
+msgstr "Типы компаний"
+
+#: pages/models.py:62 pages/models.py:103 pages/models.py:141
+#: pages/models.py:185 pages/models.py:240
+msgid "Products"
+msgstr "Продукты"
+
+#: pages/models.py:76 pages/models.py:92
+msgid "Description"
+msgstr "Описание"
+
+#: pages/models.py:82 pages/models.py:244
+msgid "Display in Public Page"
+msgstr "Показывать на публичной странице"
+
+#: pages/models.py:113
+msgid "Information's"
+msgstr "Информационные страницы"
+
+#: pages/models.py:123 pages/models.py:167
+msgid "Size"
+msgstr "Размер"
+
+#: pages/models.py:129 pages/models.py:173
+msgid "Format"
+msgstr "Формат"
+
+#: pages/models.py:226
+msgid "Question"
+msgstr "Вопрос"
+
+#: pages/models.py:229
+msgid "Answer"
+msgstr "Ответ"
+
+#: users/admin.py:16
+msgid "Profile"
+msgstr "Профиль"
+
+#: users/admin.py:57 users/models.py:52
+msgid "Name"
+msgstr "Имя"
+
+#: users/admin.py:67
+msgid "Role"
+msgstr "Роль"
+
+#: users/forms.py:27 users/forms.py:87 users/models.py:43
+msgid "Company Admin"
+msgstr "Администратор компании"
+
+#: users/forms.py:28 users/forms.py:88 users/models.py:44
+msgid "Company Employee"
+msgstr "Пользователь компании"
+
+#: users/forms.py:43
+msgid "Retype Password"
+msgstr "Повторите пароль"
+
+#: users/forms.py:48
+msgid "Confirm Deletion"
+msgstr "Подтвердить удаление"
+
+msgid "Confirm Password"
+msgstr "Подтвердите пароль"
+
+#: users/forms.py:59
+msgid "Email"
+msgstr "Эл. почта"
+
+#: users/forms.py:66
+msgid "Password"
+msgstr "Пароль"
+
+#: users/forms.py:75
+msgid "Password not match!"
+msgstr "Пароли не совпадают"
+
+#: users/forms.py:77
+msgid "User with this email exists!"
+msgstr "Пользователь с такой эл. почтой существует!"
+
+#: users/managers.py:16
+msgid "The Email must be set"
+msgstr "Эл. почта обязательна"
+
+
+msgid "Change you password"
+msgstr "Изменить пароль"
+
+msgid "Password changed successfully!"
+msgstr "Пароль успешно изменен!"
+
+msgid "I forgot my password"
+msgstr "Я забыл свой пароль"
+
+
+msgid "Reset your password"
+msgstr "Сброс пароля"
+
+
+msgid "Request new password"
+msgstr "Запросить новый пароль"
+
+msgid "You forgot your password? Enter your email and we will send you a link to reset your password."
+msgstr "Вы забыли свой пароль? Введите ваш email и мы вышлем вам ссылку для сброса пароля."
+
+
+msgid "You can't downgrade your role!"
+msgstr "Вы не можете понизить себе роль!"
+
+msgid "Download"
+msgstr "Скачать"
+
+msgid "Update"
+msgstr "Обновить"
+
+msgid "Confirm"
+msgstr "Подтвердить"
+
+msgid "Submit"
+msgstr "Создать"
+
+msgid "User Update"
+msgstr "Обновить пользователя"
+
+msgid "Delete User"
+msgstr "Удаление пользователя"
+
+msgid "File size"
+msgstr "Размер файла"
+
+msgid "File format"
+msgstr "Формат файла"
+
+msgid "File name"
+msgstr "Имя файла"
+
+#: users/managers.py:32
+msgid "Superuser must have is_staff=True."
+msgstr ""
+
+#: users/managers.py:34
+msgid "Superuser must have is_superuser=True."
+msgstr ""
+
+#: users/models.py:19
+msgid "email address"
+msgstr "Адрес эл. почты"
+
+#: users/models.py:25
+msgid "registration date"
+msgstr "Дата регистрации"
+
+
+msgid "Edit/Delete"
+msgstr "Редактировать/Удалить"
+
+msgid "Are you sure you want to delete"
+msgstr "Вы уверенны, что хотите удалить данного пользователя"
+
+
+#: users/models.py:76
+msgid "User"
+msgstr "Пользователь"
+
+#: users/models.py:77
+msgid "Users"
+msgstr "Пользователи"
+
+#: users/models.py:83
+msgid "Not Name"
+msgstr "Отсутствует имя"
+
+#: users/models.py:85
+msgid "Not Company"
+msgstr "Отсутствует компания"
+
+
+msgid "Is active"
+msgstr "Активен"
+
+msgid "Edit My Profile"
+msgstr "Изменить профиль"
+
+msgid "Login"
+msgstr "Войти"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Change Password"
+msgstr "Сменить пароль"
+
+msgid "Company users list"
+msgstr "Список пользователей"
+
+msgid "Add new user"
+msgstr "Добавить пользователя"
+
+msgid "Sign In"
+msgstr "Войти"
+
+msgid "Sign in to start your session"
+msgstr "Войдите в систему, чтобы начать сеанс"
+
+msgid "Your username and password didn't match. Please try again."
+msgstr "Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз."
+
+msgid "Your account doesn't have access to this page. To proceed, please login with an account that has access."
+msgstr "Ваша учетная запись не имеет доступа к этой странице. Чтобы продолжить, пожалуйста, войдите в систему с учетной записью, имеющей доступ."
+
+msgid "Please login to see this page."
+msgstr "Войдите в систему, чтобы начать сеанс"
+
+msgid "Oops! Page not found."
+msgstr "Упс! Страница не найдена."
+
+msgid "We could not find the page you were looking for. Meanwhile, you may"
+msgstr "Мы не смогли найти страницу, которую вы искали. Тем временем вы можете"
+
+msgid "return to information page"
+msgstr "вернуться к информационной странице"
+
+msgid "Oops! Something went wrong."
+msgstr "Упс! Что-то пошло не так."
+
+#: django_celery_beat/admin.py:71
+msgid "Task (registered)"
+msgstr "Задача (зарегистрированные)"
+
+#: django_celery_beat/admin.py:75
+msgid "Task (custom)"
+msgstr "Задача (пользовательская)"
+
+#: django_celery_beat/admin.py:92
+msgid "Need name of task"
+msgstr "Укажите название задачи"
+
+#: django_celery_beat/admin.py:103
+#, python-format
+msgid "Unable to parse JSON: %s"
+msgstr "Невозможно проанализировать JSON: %s"
+
+#: django_celery_beat/admin.py:165
+#, python-brace-format
+msgid "{0} task{1} {2} successfully {3}"
+msgstr "{0} задача {1} {2} успешно {3}"
+
+#: django_celery_beat/admin.py:168 django_celery_beat/admin.py:230
+msgid "was,were"
+msgstr "был, были"
+
+#: django_celery_beat/admin.py:177
+msgid "Enable selected tasks"
+msgstr "Включить выбранные задачи"
+
+#: django_celery_beat/admin.py:183
+msgid "Disable selected tasks"
+msgstr "Выключить выбранные задачи"
+
+#: django_celery_beat/admin.py:195
+msgid "Toggle activity of selected tasks"
+msgstr "Переключить активность выбранных задач"
+
+#: django_celery_beat/admin.py:215
+#, python-brace-format
+msgid "task \"{0}\" not found"
+msgstr "задача \"{0}\" не найдена"
+
+#: django_celery_beat/admin.py:227
+#, python-brace-format
+msgid "{0} task{1} {2} successfully run"
+msgstr "{0} задача{1} {2} успешно выполнена"
+
+#: django_celery_beat/admin.py:233
+msgid "Run selected tasks"
+msgstr "Запустить выбранные задачи"
+
+#: django_celery_beat/apps.py:15
+msgid "Periodic Tasks"
+msgstr "Периодические Задачи"
+
+#: django_celery_beat/models.py:29
+msgid "Days"
+msgstr "Дни"
+
+#: django_celery_beat/models.py:30
+msgid "Hours"
+msgstr "Часы"
+
+#: django_celery_beat/models.py:31
+msgid "Minutes"
+msgstr "Минуты"
+
+#: django_celery_beat/models.py:32
+msgid "Seconds"
+msgstr "Секунды"
+
+#: django_celery_beat/models.py:33
+msgid "Microseconds"
+msgstr "Микросекунды"
+
+#: django_celery_beat/models.py:38
+msgid "Day"
+msgstr "день"
+
+#: django_celery_beat/models.py:39
+msgid "Hour"
+msgstr "время"
+
+#: django_celery_beat/models.py:40
+msgid "Minute"
+msgstr "минут"
+
+#: django_celery_beat/models.py:41
+msgid "Second"
+msgstr "Секунды"
+
+#: django_celery_beat/models.py:42
+msgid "Microsecond"
+msgstr "Микросекунды"
+
+#: django_celery_beat/models.py:54
+msgid "Solar Event"
+msgstr "Астрономическое"
+
+#: django_celery_beat/models.py:55
+msgid "The type of solar event when the job should run"
+msgstr "Тип астрономического события для запуска задачи"
+
+#: django_celery_beat/models.py:59
+msgid "Latitude"
+msgstr "Широта"
+
+#: django_celery_beat/models.py:60
+msgid "Run the task when the event happens at this latitude"
+msgstr "Запуск задачи, когда событие происходит на данной широте"
+
+#: django_celery_beat/models.py:65
+msgid "Longitude"
+msgstr "Долгота"
+
+#: django_celery_beat/models.py:66
+msgid "Run the task when the event happens at this longitude"
+msgstr "Запуск задачи, когда событие происходит на данной долготе"
+
+#: django_celery_beat/models.py:73
+msgid "solar event"
+msgstr "астрономическое событие"
+
+#: django_celery_beat/models.py:74
+msgid "solar events"
+msgstr "астрономические события"
+
+#: django_celery_beat/models.py:124
+msgid "Number of Periods"
+msgstr "Число периодов"
+
+#: django_celery_beat/models.py:125
+msgid "Number of interval periods to wait before running the task again"
+msgstr "Количество периодов интервала перед новым запуском задачи"
+
+#: django_celery_beat/models.py:131
+msgid "Interval Period"
+msgstr "Интервальный период"
+
+#: django_celery_beat/models.py:132
+msgid "The type of period between task runs (Example: days)"
+msgstr "Тип периода между запусками задачи (Например: дни)"
+
+#: django_celery_beat/models.py:138
+msgid "interval"
+msgstr "интервал"
+
+#: django_celery_beat/models.py:139
+msgid "intervals"
+msgstr "интервалы"
+
+#: django_celery_beat/models.py:162
+#, python-brace-format
+msgid "every {}"
+msgstr "каждые {}"
+
+#: django_celery_beat/models.py:163
+#, python-brace-format
+msgid "every {} {}"
+msgstr "каждые {} {}"
+
+#: django_celery_beat/models.py:175
+msgid "Clock Time"
+msgstr "Время"
+
+#: django_celery_beat/models.py:176
+msgid "Run the task at clocked time"
+msgstr "Запуск задачи в указанное время"
+
+#: django_celery_beat/models.py:181 django_celery_beat/models.py:475
+msgid "Enabled"
+msgstr "Активна"
+
+#: django_celery_beat/models.py:182 django_celery_beat/models.py:476
+msgid "Set to False to disable the schedule"
+msgstr "Выключите для отключения расписания"
+
+#: django_celery_beat/models.py:188 django_celery_beat/models.py:189
+msgid "clocked"
+msgstr "время"
+
+#: django_celery_beat/models.py:232
+msgid "Minute(s)"
+msgstr "Минуты"
+
+#: django_celery_beat/models.py:234
+msgid "Cron Minutes to Run. Use \"*\" for \"all\". (Example: \"0,30\")"
+msgstr "Cron минуты. Используйте \"*\" для \"каждую\". (Например: \"0,30\")"
+
+#: django_celery_beat/models.py:239
+msgid "Hour(s)"
+msgstr "Часы"
+
+#: django_celery_beat/models.py:241
+msgid "Cron Hours to Run. Use \"*\" for \"all\". (Example: \"8,20\")"
+msgstr "Cron часы. Используйте \"*\" для \"каждый\". (Например: \"8,20\")"
+
+#: django_celery_beat/models.py:246
+msgid "Day(s) Of The Week"
+msgstr "Дни недели"
+
+#: django_celery_beat/models.py:248
+msgid "Cron Days Of The Week to Run. Use \"*\" for \"all\". (Example: \"0,5\")"
+msgstr "Cron дни недели. Используйте \"*\" для \"каждый\". (Например: \"0,5\")"
+
+#: django_celery_beat/models.py:254
+msgid "Day(s) Of The Month"
+msgstr "Дни"
+
+#: django_celery_beat/models.py:256
+msgid ""
+"Cron Days Of The Month to Run. Use \"*\" for \"all\". (Example: \"1,15\")"
+msgstr ""
+"Cron дни. Используйте \"*\" для \"каждый\". (Например: \"1,15\")"
+
+#: django_celery_beat/models.py:262
+msgid "Month(s) Of The Year"
+msgstr "Месяцы"
+
+#: django_celery_beat/models.py:264
+msgid ""
+"Cron Months Of The Year to Run. Use \"*\" for \"all\". (Example: \"0,6\")"
+msgstr ""
+"Cron месяцы. Используйте \"*\" для \"каждый\". (Например: \"0,6\")"
+
+#: django_celery_beat/models.py:271
+msgid "Cron Timezone"
+msgstr "Временная зона для Cron"
+
+#: django_celery_beat/models.py:273
+msgid "Timezone to Run the Cron Schedule on. Default is UTC."
+msgstr "Временная зона для Cron расписания. UTC по умолчанию."
+
+#: django_celery_beat/models.py:279
+msgid "crontab"
+msgstr "crontab"
+
+#: django_celery_beat/models.py:280
+msgid "crontabs"
+msgstr "crontab"
+
+
+#: django_celery_beat/models.py:367
+msgid "Short Description For This Task"
+msgstr "Краткое описание для этой задачи"
+
+#: django_celery_beat/models.py:372
+msgid ""
+"The Name of the Celery Task that Should be Run.  (Example: \"proj.tasks."
+"import_contacts\")"
+msgstr ""
+"Имя запускаемой Celery задачи.  (Например: \"proj.tasks."
+"import_contacts\")"
+
+#: django_celery_beat/models.py:380
+msgid "Interval Schedule"
+msgstr "Интервал"
+
+#: django_celery_beat/models.py:381
+msgid ""
+"Interval Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "Интервальное расписание для запуска задачи. Выберите только один тип "
+"расписания, остальные оставьте пустыми."
+
+#: django_celery_beat/models.py:386
+msgid "Crontab Schedule"
+msgstr "Crontab"
+
+#: django_celery_beat/models.py:387
+msgid ""
+"Crontab Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "Crontab расписание для запуска задачи. Выберите только один тип "
+"расписания, остальные оставьте пустыми."
+
+#: django_celery_beat/models.py:392
+msgid "Solar Schedule"
+msgstr "Астрономическое"
+
+#: django_celery_beat/models.py:393
+msgid ""
+"Solar Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "Астрономическое расписание для запуска задачи. Выберите только один "
+"тип расписания, остальные оставьте пустыми."
+
+#: django_celery_beat/models.py:398
+msgid "Clocked Schedule"
+msgstr "Хронометрическое"
+
+#: django_celery_beat/models.py:399
+msgid ""
+"Clocked Schedule to run the task on.  Set only one schedule type, leave the "
+"others null."
+msgstr "Хронометрическое расписание для запуска задачи. Выберите только один "
+"тип расписания, остальные оставьте пустыми."
+
+#: django_celery_beat/models.py:405
+msgid "Positional Arguments"
+msgstr "Позиционные аргументы"
+
+#: django_celery_beat/models.py:407
+msgid "JSON encoded positional arguments (Example: [\"arg1\", \"arg2\"])"
+msgstr "Закодированные в JSON позиционные аргументы (Например: [\"arg1\", \"arg2\"])"
+
+#: django_celery_beat/models.py:412
+msgid "Keyword Arguments"
+msgstr "Именованные аргументы"
+
+#: django_celery_beat/models.py:414
+msgid "JSON encoded keyword arguments (Example: {\"argument\": \"value\"})"
+msgstr "Закодированные в JSON именованные аргументы (Например: {\"argument\": \"value\"})"
+
+#: django_celery_beat/models.py:420
+msgid "Queue Override"
+msgstr "Переопределение очереди"
+
+#: django_celery_beat/models.py:422
+msgid "Queue defined in CELERY_TASK_QUEUES. Leave None for default queuing."
+msgstr "Очередь задана в CELERY_TASK_QUEUES. Оставьте None для стандартного распределения."
+
+#: django_celery_beat/models.py:431
+msgid "Exchange"
+msgstr "Exchange"
+
+#: django_celery_beat/models.py:432
+msgid "Override Exchange for low-level AMQP routing"
+msgstr "Override Exchange for low-level AMQP routing"
+
+#: django_celery_beat/models.py:436
+msgid "Routing Key"
+msgstr "Ключ маршрутизации"
+
+#: django_celery_beat/models.py:437
+msgid "Override Routing Key for low-level AMQP routing"
+msgstr "Override Routing Key for low-level AMQP routing"
+
+#: django_celery_beat/models.py:441
+msgid "AMQP Message Headers"
+msgstr "Заголовки сообщения AMQP"
+
+#: django_celery_beat/models.py:442
+msgid "JSON encoded message headers for the AMQP message."
+msgstr "Закодированные в JSON заголовки для AMQP сообщения."
+
+#: django_celery_beat/models.py:448
+msgid "Priority"
+msgstr "Приоритет"
+
+#: django_celery_beat/models.py:450
+msgid ""
+"Priority Number between 0 and 255. Supported by: RabbitMQ, Redis (priority "
+"reversed, 0 is highest)."
+msgstr ""
+"Число между 0 и 255. Поддерживается в: RabbitMQ, Redis (приоритет "
+"по убыванию, 0 наивысший)."
+
+#: django_celery_beat/models.py:455
+msgid "Expires Datetime"
+msgstr "Истекает"
+
+#: django_celery_beat/models.py:457
+msgid ""
+"Datetime after which the schedule will no longer trigger the task to run"
+msgstr "Время, после которого расписание больше не будет запускать задачу"
+
+#: django_celery_beat/models.py:462
+msgid "One-off Task"
+msgstr "Одноразовая задача"
+
+#: django_celery_beat/models.py:464
+msgid "If True, the schedule will only run the task a single time"
+msgstr "Если включено, то задача будет запущена только один раз"
+
+#: django_celery_beat/models.py:468
+msgid "Start Datetime"
+msgstr "Время начала"
+
+#: django_celery_beat/models.py:470
+msgid "Datetime when the schedule should begin triggering the task to run"
+msgstr "Время начала вызовов задачи расписанием"
+
+#: django_celery_beat/models.py:481
+msgid "Last Run Datetime"
+msgstr "Последний запуск"
+
+#: django_celery_beat/models.py:483
+msgid ""
+"Datetime that the schedule last triggered the task to run. Reset to None if "
+"enabled is set to False."
+msgstr ""
+"Время последнего вызова задачи. None если задача выключена."
+
+#: django_celery_beat/models.py:488
+msgid "Total Run Count"
+msgstr "Запусков всего"
+
+#: django_celery_beat/models.py:490
+msgid "Running count of how many times the schedule has triggered the task"
+msgstr "Количество запусков задачи этим расписанием"
+
+#: django_celery_beat/models.py:495
+msgid "Last Modified"
+msgstr "Последнее изменение"
+
+#: django_celery_beat/models.py:496
+msgid "Datetime that this PeriodicTask was last modified"
+msgstr "Время последнего изменения этой задачи"
+
+
+#: django_celery_beat/models.py:502
+msgid "Detailed description about the details of this Periodic Task"
+msgstr "Подробное описание того, что делает эта задача"
+
+#: django_celery_beat/models.py:511
+msgid "periodic task"
+msgstr "периодическая задача"
+
+#: django_celery_beat/models.py:512
+msgid "periodic tasks"
+msgstr "периодические задачи"
+
+
+msgid "Confirm your email"
+msgstr "Подтвердите свой адрес электронной почты"
+
+
+msgid "The email address has been successfully confirmed!"
+msgstr "Адрес электронной почты успешно подтвержден!"
+
+
+msgid "An error occurred while confirming the email address!"
+msgstr "Возникла ошибка при подтверждении адреса электронной почты!"
+
+msgid "A link to activate the account was sent to this email: "
+msgstr "Ссылка для активации аккаунта была отправлена на почту: "
+
+msgid "Hello "
+msgstr "Привет"
+
+msgid "Bad activation data"
+msgstr "Некорректные данные для активации аккаунта!"
+
+msgid "Token is not valid"
+msgstr "Токен недействителен"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "Resend activation email"
+msgstr "Отправить повторное письмо для активации"
+
+msgid "Account confirmed"
+msgstr "Аккаунт активирован"
+
+msgid "Is staff"
+msgstr "Персонал(Разрешен вход в админку Портала)"
+
+msgid "External URL"
+msgstr "Ссылка на внешний видеохостинг"
+
+msgid "Cover"
+msgstr "Обложка для видео"
+
+msgid "We've emailed you instructions for setting your password."
+msgstr "Мы отправили вам по электронной почте инструкции по сбросу вашего пароля."
+
+msgid "If you dont receive an email, please make sure your entered the address you registered with."
+msgstr "Если вы не получили электронное письмо, пожалуйста, убедитесь, что вы ввели адрес, с которым зарегистрировались."
+
+
+msgid "The password reset link was invalid, possibly because it has already been used. Please request a new password reset."
+msgstr "Ссылка для сброса пароля была недействительной, возможно, потому, что она уже использовалась. Пожалуйста, запросите повторно сброс пароля."
+
+
+msgid "Password set"
+msgstr "Пароль установлен"
+
+
+msgid "Reset your password on"
+msgstr "Ссылка для сброса вашего пароля"
+
+msgid "for"
+msgstr "для"
+
+msgid "Start typing to filter…"
+msgstr "Начните печатать для поиска..."
+
+msgid "Notification"
+msgstr "Оповещение"
+
+msgid "Notifications"
+msgstr "Оповещения"
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "is_read"
+msgstr "Прочитано"
+
+msgid "Total notifications"
+msgstr "Всего оповещений"
+
+msgid "See All Notifications"
+msgstr "Смотреть все оповещения"
+
+msgid "New Notifications"
+msgstr "Новых оповещений"
+
+msgid "Folders"
+msgstr "Папки"
+
+msgid "All notifications"
+msgstr "Все оповещения"
+
+msgid "Unread notifications"
+msgstr "Непрочитанные оповещения"
+
+msgid "Read Notification"
+msgstr "Чтение оповещения"
+
+msgid "From: "
+msgstr "От: "
+
+msgid "Subject: "
+msgstr "Тема: "
+
+msgid "Incorrect email format!"
+msgstr "Некорректный формат email!"
+
+msgid "Send by email"
+msgstr "Дублировать оповещение на email"
+
+
+msgid "Back to Inbox"
+msgstr "Назад во входящие"
+
+msgid "of"
+msgstr "из"
+
+msgid "Page"
+msgstr "Страница"

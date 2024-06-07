@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load notification_count %}
+{% load new_notification_count %}
+
+{% block content %}
+<head>
+    <title>{% trans 'Notification' %}</title>
+</head>
+{% include 'includes/main_navbar.html' %}
+{% include 'includes/main_sidebar.html' %}
+
+
+<!-- Main content -->
+{#    <section class="content">#}
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>{% trans 'Notifications' %}</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="{% url 'notifications' %}?new=False"
+                   class="btn btn-primary btn-block mb-3">{% trans 'Back to Inbox' %}</a>
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">{% trans 'Folders' %}</h3>
+                    </div>
+                    <div class="card-body p-0">
+                        <ul class="nav nav-pills flex-column">
+                            <li class="nav-item active">
+                                <a href="{% url 'notifications' %}?new=False" class="nav-link">
+                                    <i class="fas fa-inbox"></i> {% trans 'All notifications' %}
+                                    <span class="badge bg-secondary float-right">{% notification_count request.user %}</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'notifications' %}?new=True" class="nav-link">
+                                    <i class="far fa-envelope"></i> {% trans 'Unread notifications' %}
+                                    <span class="badge bg-primary float-right">{% new_notification_count request.user %}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+                <div class="card card-primary card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">{% trans 'Read Notification' %}</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body p-0">
+                        <div class="mailbox-read-info">
+                            <h5>{% trans 'Subject: ' %}{{ notification.subject }}</h5>
+                            <p></p>
+                            {% trans 'From: ' %} Getmobit
+                            <span class="mailbox-read-time float-right">{{ notification.created_at }}</span>
+                        </div>
+
+                        <!-- /.mailbox-read-info -->
+                        <div class="mailbox-controls with-border text-lg-center">
+                            <div class="btn-group">
+                                <form method="post" action="{% url 'delete-notification' notification.pk %}">
+                                    {% csrf_token %}
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="far fa-trash-alt"></i> {% trans 'Delete' %} </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.btn-group -->
+
+                        {% autoescape off %}
+                        <div class="mailbox-read-message">
+                            {{ notification.text }}
+                            {% endautoescape %}
+                        </div>
+
+                        <div class="card-footer">
+                                <form method="post" action="{% url 'delete-notification' notification.pk %}">
+                                    {% csrf_token %}
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="far fa-trash-alt"></i> {% trans 'Delete' %} </button>
+                                </form>
+                        </div>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+    </section>
+</div>
+
+{% endblock content %}

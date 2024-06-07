@@ -1,0 +1,55 @@
+{% load static %}
+{% load i18n %}
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+
+    <div class="brand-link" style="position: static;">
+        <img src="{% static 'admin-lte/dist/img/getmobit_logo.png' %}" alt="Getmobit Logo"
+             class="brand-image img-circle elevation-3" width="70"
+             style="opacity: .8">
+        {#        <img src="{% static 'admin-lte/dist/img/backend_web_img_logo-w.svg' %}"#}
+        {#             alt="Getmobit Logo"#}
+        {#             width="220"#}
+        {#             style="opacity: .8">#}
+        <div class="brand-text ">Getmobit</div>
+    </div>
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                {% if user.is_authenticated %}
+                    {% if user.profile.role == 1 %}
+                        <li class="nav-item">
+                            <a href="{% url 'create-user' %}" class="nav-link">
+                                <i class="far fa-plus-square nav-icon"></i>
+                                <p>{% trans 'Add new user' %}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'users' %}" class="nav-link">
+                                <i class="far fa-list-alt nav-icon"></i>
+                                <p>{% trans 'Company users list' %}</p>
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a href="{% url 'update-profile' %}" class="nav-link">
+                            <i class="far fa-edit nav-icon"></i>
+                            <p>{% trans 'Edit My Profile' %} </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-separator"></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

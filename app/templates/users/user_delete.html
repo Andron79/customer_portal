@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <head>
+        <title>{% trans 'Delete User' %}</title>
+    </head>
+
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+
+    <!-- Main content -->
+    <div class="content-wrapper login-page__wrapper">
+        <div class="login-box">
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">{% trans 'Are you sure you want to delete' %}?</h3>
+                </div>
+                <div class="card-body">
+                    <p>{{ object.company }}</p>
+                    <p>{{ object.user }}</p>
+                    <p>{{ object }}</p>
+                    <p>{{ object.get_role_display }}</p>
+
+                    <form method="post" autocomplete="off">
+                        {% csrf_token %}
+
+                        {% for hidden_field in form.hidden_fields %}
+                            {{ hidden_field }}
+                        {% endfor %}
+
+                        {% for field in form.visible_fields %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {% render_field field class="form-control" autocomplete="new-password" %}
+                                {% if field.help_text %}
+                                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">{% trans 'Confirm' %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}

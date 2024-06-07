@@ -1,0 +1,10 @@
+venv/
+
+.env
+.env_*
+.env.*
+!.env.example
+
+.idea
+docker-compose.local.dev.yml
+debug/

@@ -1,0 +1,44 @@
+version: "3.1"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-cp_db}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-pass1234}
+      - POSTGRES_HOST=${POSTGRES_HOST:-postgres}
+      - POSTGRES_PORT=${POSTGRES_PORT:-5432}
+    networks:
+      - db_net
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: always
+  app:
+    env_file: .env
+    build: ./app
+    volumes:
+      - static_volume:/home/customerportal/app/staticfiles:z
+    command: gunicorn -c python:gunicorn_config customer_portal.wsgi:application
+    expose:
+      - 8000
+    depends_on:
+      - db
+    networks:
+      - db_net
+      - app_net
+  nginx:
+    image: getmobit/customer-portal-nginx:latest
+    volumes:
+      - static_volume:/home/customerportal/app/staticfiles:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    networks:
+      - app_net
+volumes:
+  postgres_data:
+  static_volume:
+networks:
+  db_net:
+  app_net:

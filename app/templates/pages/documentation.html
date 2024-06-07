@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <head>
+        <title>{% trans 'Documents' %}</title>
+    </head>
+
+    {% include 'includes/main_navbar.html' %}
+    {% include 'includes/main_sidebar.html' %}
+
+    <div class="content-wrapper">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">{% trans 'Documents' %}</h1>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row grid-wrapper">
+                {% for document in documents %}
+                    {#                    <div class="col-4">#}
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h5 class="m-0">{{ document.title }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ document.description }}</p>
+                            <h6 class="card-title">Format: {{ document.file_format }}</h6>
+                            <p class="card-text">Size: {{ document.humanized_file_size }} </p>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="{% url 'download-document' pk=document.pk %}" rel="external" target="_blank"
+                               class="btn btn-primary">{% trans 'Download' %} </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+{% endblock %}
